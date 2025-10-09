@@ -3,13 +3,12 @@ package diceware
 import (
 	"crypto/rand"
 	"fmt"
-	"math"
 	"strings"
 )
 
 func GeneratePassword(n int) string {
 	var buffer = strings.Builder{}
-	for i := range 4 {
+	for i := range n {
 		var word = getWord()
 		if i%2 == 1 {
 			word = strings.ToUpper(word)
@@ -17,12 +16,6 @@ func GeneratePassword(n int) string {
 		buffer.WriteString(word)
 	}
 	return buffer.String()
-//	, CalculateEntropy(math.Pow(float64(maxNum+1), float64(n)))
-}
-
-func CalculateEntropy(permutations float64) (numBits int) {
-	var log2 = math.Ceil(math.Log2(permutations))
-	return int(log2)
 }
 
 func getWord() string {

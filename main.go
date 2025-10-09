@@ -2,23 +2,37 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"os"
+	"strconv"
 
 	"github.com/christopherfujino/go-pass/diceware"
 )
 
-const maxNum = (6 * 6 * 6 * 6 * 6) - 1
-
 func main() {
-	const n = 4
+	var n = getN(os.Args)
 	password := diceware.GeneratePassword(n)
-	var entropy = diceware.CalculateEntropy(math.Pow(float64(maxNum + 1), float64(n)))
+	var entropy = diceware.CalculateEntropy(n)
 	fmt.Printf(
-		"Your password is \"%s\"\nThe length of your password is %d with %d bits of entropy.\n",
+		"%s\n\nThe length of your password is %d with %d bits of entropy.\n",
 		password,
 		len(password),
 		entropy,
 	)
+}
+
+func getN(args []string) (int) {
+	if len(args) > 1 {
+		var nString = args[1]
+		n, err := strconv.Atoi(nString)
+		if err != nil {
+			panic(err)
+		}
+		if n > 0 && n < 64 {
+			return n
+		}
+		panic(fmt.Sprintf("Invalid length %d", n))
+	}
+	return 4
 }
 
 //type ParseState int
