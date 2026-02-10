@@ -1,12 +1,12 @@
 WORDLIST = wordlist.txt
+OUT = diceware
 
 .PHONY: run
-run: $(WORDLIST)
+run: $(WORDLIST) $(OUT)
 	go run .
 
-.PHONY: build
-build:
-	go build -o diceware .
+$(OUT): $(WORDLIST)
+	go build -o $@ .
 
 $(WORDLIST):
 	curl -L 'https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt' -o $(WORDLIST)
