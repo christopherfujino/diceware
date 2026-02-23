@@ -1,9 +1,6 @@
-#include <string>
-#include <vector>
-
 #include "wordlist.hpp"
 
-const std::vector<std::string> words = {
+const char *words[7776] = {
   "abacus",
   "abdomen",
   "abdominal",

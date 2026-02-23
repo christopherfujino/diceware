@@ -1,4 +1,4 @@
-#include <string>
-#include <vector>
+#pragma once
 
-extern const std::vector<std::string> words;
+const int wordSize = 7776;
+extern const char *words[wordSize];
