@@ -1,8 +1,9 @@
 *.o
 *.obj
-a.out
+a.out*
 
 build/
 
 # clangd
 .cache/
+compile_commands.json

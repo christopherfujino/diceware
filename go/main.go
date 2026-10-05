@@ -31,7 +31,7 @@ func getAverageGuessCountString(entropy int) string {
 
 func main() {
 	var n = getN(os.Args)
-	password := diceware.GeneratePassword(n)
+	password := diceware.GeneratePassword(n, diceware.PascalCase)
 	var entropy = diceware.CalculateEntropy(n)
 	fmt.Printf(
 		"%s\n\nThe length of your password is %d bytes with %d bits of entropy (on average %s guesses).\n",
