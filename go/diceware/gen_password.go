@@ -8,11 +8,11 @@ import (
 
 func GeneratePassword(n int) string {
 	var buffer = strings.Builder{}
-	for i := range n {
+	for range n {
 		var word = getWord()
-		if i%2 == 1 {
-			word = strings.ToUpper(word)
-		}
+		var runes []rune = []rune(word)
+		runes[0] = rune(strings.ToUpper(string(runes[0]))[0])
+		word = string(runes)
 		buffer.WriteString(word)
 	}
 	return buffer.String()
